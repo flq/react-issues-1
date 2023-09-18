@@ -10,11 +10,11 @@ export function App(props) {
       <h1>Hello.</h1>
       <ul>{items.map(i => <li key={i}>{i}</li>)}</ul>
       <Uploader onItemCompleted={(item) => {
-        setItems([...items, item]);
+        setItems(items => [...items, item]);
         console.log("Item done");
       }} onAllCompleted={async () => {
-        setItems([`"All items done" ${items.join(",")}`])
-        await asyncTimeout(1000);
+        setItems([`All items done: "${items.join(", ")}"`])
+        await asyncTimeout(2000);
         setItems([]);
       }} />
     </>
